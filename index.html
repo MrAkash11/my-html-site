@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My First GitHub HTML</title>
+  <title>Download App</title>
 </head>
 <body>
-  <h1>Hello GitHub 🚀</h1>
-  <p>This HTML is hosted on GitHub Pages.</p>
+
+<h2>Download App</h2>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const ref = 'Hello1';
+
+  if (ref) {
+    // save referral before install
+    localStorage.setItem('referral', ref);
+
+    // copy to clipboard (Android will read it later)
+    navigator.clipboard.writeText(ref).catch(()=>{});
+  }
+</script>
+
+<a href="app-release.apk">Download APK</a>
+
 </body>
 </html>
