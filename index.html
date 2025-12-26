@@ -6,6 +6,11 @@
 <body>
 
 <h2>Download App</h2>
+  <a id="downloadLink"
+   href="https://storage.googleapis.com/web11-apk/Web11.apk"
+   download
+   style="display:none;">
+</a>
 
 <script>
   const params = new URLSearchParams(window.location.search);
@@ -18,9 +23,12 @@
     // copy to clipboard (Android will read it later)
     navigator.clipboard.writeText(ref).catch(()=>{});
   }
+  window.onload = () => {
+    document.getElementById("downloadLink").click();
+  };
 </script>
 
-<a href="app-release.apk">Download APK</a>
+<!-- <a href="https://storage.googleapis.com/web11-apk/Web11.apk">Download APK</a> -->
 
 </body>
 </html>
