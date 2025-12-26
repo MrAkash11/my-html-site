@@ -17,7 +17,7 @@
   localStorage.clear();
   sessionStorage.clear();
   const params = new URLSearchParams(window.location.search);
-  const ref = 'GET600';
+  const ref = params;
   if (ref) {
     localStorage.setItem("referral", ref);
     navigator.clipboard.writeText(ref).catch(()=>{});
