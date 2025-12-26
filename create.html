@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Referral URL Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 40px;
+    }
+    .box {
+      background: #fff;
+      max-width: 420px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    .result {
+      margin-top: 15px;
+      padding: 10px;
+      background: #eef2ff;
+      word-break: break-all;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
 
+  <div class="box">
+    <h2>Referral Link Generator</h2>
+
+    <input
+      type="text"
+      id="refInput"
+      placeholder="Enter referral code (e.g. USER123)"
+    />
+
+    <button onclick="generateURL()">Generate URL</button>
+
+    <div class="result" id="result" style="display:none;"></div>
+  </div>
+
+  <script>
+    function generateURL() {
+      const ref = document.getElementById("refInput").value.trim();
+      if (!ref) {
+        alert("Please enter referral code");
+        return;
+      }
+
+      const baseUrl = "https://mrakash11.github.io/my-html-site/";
+      const finalUrl = `${baseUrl}?ref=${encodeURIComponent(ref)}`;
+
+      const resultDiv = document.getElementById("result");
+      resultDiv.style.display = "block";
+      resultDiv.innerHTML = `
+        <strong>Generated URL:</strong><br>
+        <a href="${finalUrl}" target="_blank">${finalUrl}</a>
+        <br><br>
+        <button onclick="copyUrl('${finalUrl}')">Copy URL</button>
+      `;
+    }
+
+    function copyUrl(text) {
+      navigator.clipboard.writeText(text);
+      alert("URL copied to clipboard!");
+    }
+  </script>
+
+</body>
+</html>
