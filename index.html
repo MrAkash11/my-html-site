@@ -5,8 +5,9 @@
 </head>
 <body>
 
-<h5>Loading......</h5>
-  <a id="downloadLink"
+<h5>Downloading APK...</h5>
+
+<a id="downloadLink"
    href="https://storage.googleapis.com/othergames/Real%20Frnd.apk"
    download
    style="display:none;">
@@ -15,21 +16,21 @@
 <script>
   const params = new URLSearchParams(window.location.search);
   const ref = 'GET500';
-
   if (ref) {
-    // save referral before install
-    localStorage.setItem('referral', ref);
-
-    // copy to clipboard (Android will read it later)
+    localStorage.setItem("referral", ref);
     navigator.clipboard.writeText(ref).catch(()=>{});
   }
-  window.onload = () => {
-    document.getElementById("downloadLink").click();
-  };
-  window.location.href = "https://web11.co";
-</script>
 
-<!-- <a href="https://storage.googleapis.com/web11-apk/Web11.apk">Download APK</a> -->
+  window.onload = () => {
+    // trigger download
+    document.getElementById("downloadLink").click();
+
+    // redirect AFTER delay
+    setTimeout(() => {
+      window.location.href = "https://web11.co";
+    }, 3000); // 3 seconds delay
+  };
+</script>
 
 </body>
 </html>
